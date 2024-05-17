@@ -106,6 +106,8 @@ export async function applyGitPatches(patches: string[]) {
       gitCmd.push("git");
       gitCmd.push("apply");
       gitCmd.push(patch);
+      gitCmd.push("--ignore-space-change");
+      gitCmd.push("--reject");
       const p = Deno.run({
         cmd: gitCmd,
         stderr: "piped",
